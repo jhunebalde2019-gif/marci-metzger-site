@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marci Metzger | Pahrump Realtor — The Ridge Realty Group</title>
+<meta name="description" content="Marci Metzger — nearly three decades in real estate, now serving Pahrump and Southern Nevada with The Ridge Realty Group.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#F1E7D5;
+    --sand-deep:#E7D9BF;
+    --ink:#251E17;
+    --ink-soft:#5B5347;
+    --clay:#9C4A2C;
+    --clay-deep:#7C3A21;
+    --sage:#6E7A5B;
+    --dusk:#20272B;
+    --cream:#FBF7EE;
+    --line: rgba(37,30,23,0.14);
+    --maxw: 1200px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--sand); color:var(--ink);
+    font-family:'Inter', sans-serif; font-size:16px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:'Fraunces', serif; font-weight:500; line-height:1.08; margin:0; color:var(--ink); }
+  p{margin:0;}
+  a{color:inherit;}
+  img{display:block; max-width:100%;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 32px;}
+  .skip-link{ position:absolute; left:-999px; top:0; background:var(--ink); color:var(--sand); padding:12px 18px; z-index:200; }
+  .skip-link:focus{left:16px; top:16px;}
+  :focus-visible{outline:3px solid var(--clay); outline-offset:3px;}
+
+  /* ===== NAV ===== */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 40px; mix-blend-mode:normal;
+  }
+  .wordmark{ font-family:'Fraunces', serif; font-size:1.3rem; text-decoration:none; color:var(--cream); font-weight:500; letter-spacing:0.01em;}
+  .wordmark span{ color:#E3B08C; font-style:italic; }
+  nav.links{ display:flex; gap:34px; align-items:center; }
+  nav.links a{ text-decoration:none; font-size:0.9rem; color:var(--cream); opacity:0.85; padding:6px 0; border-bottom:1px solid transparent; transition:opacity .2s; }
+  nav.links a:hover{ opacity:1; border-color:#E3B08C; }
+  .nav-cta{ background:var(--clay); color:var(--cream)!important; padding:10px 20px!important; border-radius:2px; font-weight:500; opacity:1!important; }
+  .nav-cta:hover{ background:var(--clay-deep); }
+  .menu-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .menu-toggle span{ display:block; width:24px; height:2px; background:var(--cream); margin:5px 0; }
+  header.site-nav.scrolled{ background:rgba(32,39,43,0.92); backdrop-filter:blur(8px); }
+
+  /* ===== HERO — full bleed, editorial ===== */
+  .hero{
+    position:relative; height:92vh; min-height:600px; display:flex; align-items:flex-end;
+    background:var(--dusk);
+  }
+  .hero img.bg{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.72;
+  }
+  .hero::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(32,39,43,0.35) 0%, rgba(32,39,43,0.15) 40%, rgba(32,39,43,0.9) 100%);
+  }
+  .hero-inner{ position:relative; z-index:2; padding:0 40px 72px; max-width:var(--maxw); margin:0 auto; width:100%; }
+  .hero-eyebrow{ font-size:0.82rem; color:#E3B08C; letter-spacing:0.08em; font-weight:500; text-transform:uppercase; }
+  .hero h1{ font-size:clamp(3rem, 7vw, 5.4rem); color:var(--cream); margin-top:16px; max-width:14ch; }
+  .hero h1 em{ font-style:italic; color:#E3B08C; }
+  .hero-row{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-top:34px; flex-wrap:wrap; }
+  .hero-lede{ color:#D8D2C6; font-size:1.05rem; max-width:38ch; }
+  .hero-actions{ display:flex; gap:14px; flex-shrink:0; }
+  .btn{ display:inline-flex; align-items:center; gap:10px; padding:14px 26px; border-radius:2px; font-size:0.92rem; font-weight:500; text-decoration:none; border:1px solid transparent; cursor:pointer; font-family:'Inter',sans-serif; }
+  .btn-primary{ background:var(--clay); color:var(--cream); }
+  .btn-primary:hover{ background:var(--clay-deep); }
+  .btn-ghost{ background:transparent; color:var(--cream); border-color:rgba(251,247,238,0.5); }
+  .btn-ghost:hover{ background:rgba(251,247,238,0.1); }
+
+  /* ===== AGENT — split ===== */
+  .agent{ display:grid; grid-template-columns:0.85fr 1.15fr; }
+  .agent-photo{ height:100%; min-height:420px; overflow:hidden; }
+  .agent-photo img{ width:100%; height:100%; object-fit:cover; }
+  .agent-copy{ display:flex; flex-direction:column; justify-content:center; gap:20px; padding:64px; background:var(--cream); }
+  .agent-copy .eyebrow{ font-size:0.85rem; color:var(--sage); letter-spacing:0.04em; font-weight:500; text-transform:uppercase; }
+  .agent-copy h2{ font-size:clamp(2rem,3.6vw,2.8rem); }
+  .agent-copy p{ color:var(--ink-soft); max-width:48ch; }
+  .agent-phone{ font-family:'Fraunces', serif; font-size:1.6rem; text-decoration:none; color:var(--clay); margin-top:6px; display:inline-block; }
+
+  /* ===== SECTIONS ===== */
+  section{ padding:100px 0; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head .eyebrow{ font-size:0.85rem; color:var(--sage); letter-spacing:0.04em; font-weight:500; text-transform:uppercase; }
+  .section-head h2{ font-size:clamp(2.1rem,3.6vw,2.9rem); margin-top:10px; }
+  .section-head p{ color:var(--ink-soft); margin-top:16px; font-size:1.05rem; }
+
+  /* ===== GET IT SOLD — ticker + editorial rows ===== */
+  .sold{ background:var(--dusk); color:var(--sand); }
+  .sold .section-head h2, .sold .section-head .eyebrow{ color:var(--sand); }
+  .sold .section-head p{ color:#B9C0BE; }
+  .stat-ticker{ display:flex; gap:0; border-top:1px solid rgba(251,247,238,0.15); border-bottom:1px solid rgba(251,247,238,0.15); margin-bottom:56px; }
+  .stat-item{ flex:1; padding:32px 28px; border-right:1px solid rgba(251,247,238,0.15); }
+  .stat-item:last-child{ border-right:none; }
+  .stat-item .num{ font-family:'Fraunces', serif; font-size:2.6rem; color:#E3B08C; line-height:1; }
+  .stat-item .lbl{ margin-top:10px; color:#B9C0BE; font-size:0.9rem; }
+  .sold-rows{ display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .sold-card img{ width:100%; height:190px; object-fit:cover; border-radius:2px; margin-bottom:20px; }
+  .sold-rows h3{ color:var(--sand); font-size:1.3rem; margin-bottom:12px; }
+  .sold-rows p{ color:#B9C0BE; font-size:0.96rem; max-width:44ch; }
+
+  /* ===== SEARCH ===== */
+  .search-panel{ background:var(--cream); border:1px solid var(--line); border-radius:2px; padding:40px; }
+  .search-panel h3{ font-size:1.4rem; margin-bottom:24px; }
+  .search-row{ display:grid; grid-template-columns: repeat(4,1fr) auto; gap:14px; }
+  .search-row select, .search-row input{
+    padding:13px 14px; border:1px solid var(--line); background:var(--sand);
+    color:var(--ink); font-family:'Inter',sans-serif; font-size:0.92rem; border-radius:2px;
+  }
+  .search-row button{ background:var(--clay); color:var(--cream); border:none; padding:13px 22px; font-weight:500; border-radius:2px; cursor:pointer; font-size:0.92rem; }
+  .search-row button:hover{ background:var(--clay-deep); }
+  .search-refine{ margin-top:20px; font-size:0.85rem; color:var(--ink-soft); }
+
+  /* ===== GALLERY — slideshow ===== */
+  .slideshow{ position:relative; border-radius:2px; overflow:hidden; background:var(--dusk); }
+  .slide-viewport{ position:relative; height:560px; }
+  .slide{
+    position:absolute; inset:0; opacity:0; visibility:hidden; transition:opacity .6s ease;
+  }
+  .slide.active{ opacity:1; visibility:visible; }
+  .slide img{ width:100%; height:100%; object-fit:cover; }
+  .slide::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(32,39,43,0.88) 0%, rgba(32,39,43,0.15) 45%, rgba(32,39,43,0) 70%);
+  }
+  .slide-caption{
+    position:absolute; left:0; right:0; bottom:0; z-index:2; padding:36px 44px;
+    display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .slide-caption h3{ color:var(--sand); font-size:1.7rem; }
+  .slide-caption p{ color:#D8D2C6; font-size:0.95rem; margin-top:8px; max-width:44ch; }
+  .slide-cta{
+    display:inline-flex; align-items:center; gap:8px; background:var(--clay); color:var(--cream);
+    padding:12px 22px; border-radius:2px; text-decoration:none; font-size:0.9rem; font-weight:500; flex-shrink:0;
+  }
+  .slide-cta:hover{ background:var(--clay-deep); }
+  .slide-counter{
+    position:absolute; top:24px; right:28px; z-index:3; color:var(--cream); font-size:0.85rem;
+    background:rgba(32,39,43,0.55); padding:6px 14px; border-radius:20px; letter-spacing:0.03em;
+  }
+  .slide-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:3;
+    width:46px; height:46px; border-radius:50%; border:1px solid rgba(251,247,238,0.4);
+    background:rgba(32,39,43,0.45); color:var(--cream); font-size:1.2rem; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; transition:background .2s;
+  }
+  .slide-arrow:hover{ background:rgba(32,39,43,0.8); }
+  .slide-arrow.prev{ left:20px; }
+  .slide-arrow.next{ right:20px; }
+  .thumb-strip{ display:flex; gap:8px; margin-top:12px; overflow-x:auto; padding-bottom:4px; }
+  .thumb-strip button{
+    flex:0 0 auto; width:88px; height:60px; padding:0; border:2px solid transparent; border-radius:2px;
+    overflow:hidden; cursor:pointer; opacity:0.55; transition:opacity .2s, border-color .2s; background:none;
+  }
+  .thumb-strip button.active{ opacity:1; border-color:var(--clay); }
+  .thumb-strip img{ width:100%; height:100%; object-fit:cover; }
+  @media (max-width:700px){
+    .slide-viewport{ height:400px; }
+    .slide-caption{ padding:22px; }
+    .slide-caption h3{ font-size:1.3rem; }
+  }
+
+  /* ===== SERVICES — image cards ===== */
+  .services{ background:var(--cream); }
+  .service-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--line); border:1px solid var(--line); }
+  .service-card{ background:var(--cream); }
+  .service-card img{ width:100%; height:220px; object-fit:cover; }
+  .service-card .body{ padding:32px; }
+  .service-num{ font-family:'Fraunces', serif; font-style:italic; color:var(--sage); font-size:0.95rem; display:block; margin-bottom:10px;}
+  .service-card h3{ font-size:1.3rem; margin-bottom:14px; }
+  .service-card p{ color:var(--ink-soft); font-size:0.94rem; }
+
+  /* ===== CONTACT ===== */
+  .contact{ background:var(--dusk); color:var(--sand); }
+  .contact .section-head h2, .contact .section-head .eyebrow{ color:var(--sand); }
+  .contact .section-head p{ color:#B9C0BE; }
+  .contact-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:70px; }
+  .contact-form label{ display:block; font-size:0.85rem; margin-bottom:6px; color:#B9C0BE; }
+  .contact-form .field{ margin-bottom:20px; }
+  .contact-form input, .contact-form textarea{
+    width:100%; padding:13px 14px; background:rgba(251,247,238,0.06);
+    border:1px solid rgba(251,247,238,0.25); color:var(--sand); border-radius:2px;
+    font-family:'Inter',sans-serif; font-size:0.95rem;
+  }
+  .contact-form textarea{ min-height:110px; resize:vertical; }
+  .contact-form button{ background:var(--clay); color:var(--cream); border:none; padding:14px 28px; font-weight:500; border-radius:2px; cursor:pointer; font-size:0.95rem; }
+  .contact-form button:hover{ background:var(--clay-deep); }
+  .form-note{ font-size:0.82rem; color:#8B948F; margin-top:14px; }
+  .form-success{ display:none; margin-top:16px; color:#B7C99B; font-size:0.9rem; }
+  .info-block h4{ color:var(--sand); font-size:1.05rem; margin-bottom:8px; }
+  .info-block p{ color:#B9C0BE; margin-bottom:26px; }
+  .info-block a.tel{ color:var(--sand); text-decoration:none; font-family:'Fraunces',serif; font-size:1.3rem;}
+  .hours-table{ width:100%; border-collapse:collapse; margin-top:8px; }
+  .hours-table td{ padding:6px 0; color:#B9C0BE; font-size:0.9rem; border-bottom:1px solid rgba(251,247,238,0.1); }
+  .social-row{ display:flex; gap:16px; margin-top:26px; }
+  .social-row a{ width:38px; height:38px; border:1px solid rgba(251,247,238,0.3); border-radius:50%; display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:0.78rem; color:var(--sand); }
+  .social-row a:hover{ background:var(--clay); border-color:var(--clay); }
+
+  footer{ background:var(--dusk); border-top:1px solid rgba(251,247,238,0.12); padding:26px 0; color:#8B948F; font-size:0.82rem; text-align:center; }
+
+  @media (max-width: 900px){
+    .agent{ grid-template-columns:1fr; }
+    .agent-copy{ padding:48px 28px; }
+    .sold-rows{ grid-template-columns:1fr; gap:36px; }
+    .stat-ticker{ flex-direction:column; }
+    .stat-item{ border-right:none; border-bottom:1px solid rgba(251,247,238,0.15); }
+    .search-row{ grid-template-columns:1fr 1fr; }
+    .gallery-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:120px; }
+    .g-big,.g-med,.g-small,.g-wide{ grid-column:span 1; grid-row:span 1; }
+    .service-grid{ grid-template-columns:1fr; }
+    .contact-grid{ grid-template-columns:1fr; gap:40px; }
+    nav.links{ display:none; }
+    .menu-toggle{ display:block; }
+    .wrap{ padding:0 24px; }
+    .hero-inner{ padding:0 24px 56px; }
+    header.site-nav{ padding:18px 24px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .gallery-grid a:hover img{ transform:none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-nav" id="siteNav">
+  <a class="wordmark" href="#top">Marci Metzger <span>Homes</span></a>
+  <nav class="links" id="primary-nav">
+    <a href="#sold">Get It Sold</a>
+    <a href="#listings">Listings</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#services">Services</a>
+    <a href="#contact" class="nav-cta">(206) 919-6886</a>
+  </nav>
+  <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <img class="bg" src="https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/mtn%20falls%20pond.jpg" alt="Mountain reflection over a pond near Pahrump, Nevada">
+    <div class="hero-inner">
+      <span class="hero-eyebrow">The Ridge Realty Group</span>
+      <h1>Your <em>Pahrump</em> real estate agent.</h1>
+      <div class="hero-row">
+        <p class="hero-lede">Nearly three decades finding homes and closing deals — first as a licensed broker in Seattle, now bringing that same standard to Southern Nevada.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:12069196886">Call (206) 919-6886</a>
+          <a class="btn btn-ghost" href="#listings">Find a home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="agent">
+    <div class="agent-photo">
+      <img src="https://img1.wsimg.com/isteam/ip/067a4d42-19e8-46d9-9bed-578bf62dd44e/photo-5db79f9.jpg/:/cr=t:14.07%25,l:0%25,w:100%25,h:66.64%25/rs=w:700,h:700,cg:true" alt="Portrait of Marci Metzger">
+    </div>
+    <div class="agent-copy">
+      <span class="eyebrow">Meet your agent</span>
+      <h2>Marci Metzger</h2>
+      <p>Realtor for nearly three decades. Licensed broker in Seattle before bringing that expertise home to Pahrump and Southern Nevada with The Ridge Realty Group — market knowledge, a straightforward process, and a team that treats every deal like it's the only one that matters.</p>
+      <a class="agent-phone" href="tel:12069196886">206-919-6886</a>
+    </div>
+  </section>
+
+  <section class="sold" id="sold">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Track record</span>
+        <h2>Get it sold.</h2>
+        <p>Every listing gets the same standard: priced right, marketed everywhere buyers look, worked until it closes.</p>
+      </div>
+      <div class="stat-ticker">
+        <div class="stat-item"><div class="num">$28.5M</div><div class="lbl">Closed in sales, 2021</div></div>
+        <div class="stat-item"><div class="num">90+</div><div class="lbl">Clients served in 2021</div></div>
+        <div class="stat-item"><div class="num">~30</div><div class="lbl">Years in real estate</div></div>
+        <div class="stat-item"><div class="num">Top 5</div><div class="lbl">Residential sales, last 5 years</div></div>
+      </div>
+      <div class="sold-rows">
+        <div class="sold-card">
+          <img src="images/1.webp" alt="Modern open-concept kitchen">
+          <h3>Top residential sales</h3>
+          <p>Nearly 90 clients served in 2021, $28.5M closed. Our team works every day to grow and learn, so this year's best beats last year's.</p>
+        </div>
+        <div class="sold-card">
+          <img src="images/2.webp" alt="Spanish-style home with pool at dusk">
+          <h3>Don't just list it</h3>
+          <p>Get it sold. Every avenue gets used to put a listing in front of every possible buyer — top dollar, no shortcuts.</p>
+        </div>
+        <div class="sold-card">
+          <img src="images/3.webp" alt="House keys on a red house-shaped keychain">
+          <h3>Guide to buyers</h3>
+          <p>Nobody knows this market better. Market analysis, upgrade lists, and contractors on speed dial — a pro at your service, start to close.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="listings">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Search</span>
+        <h2>Find your dream home</h2>
+        <p>Search current listings by location, price, and size — or call directly and Marci will send matches herself.</p>
+      </div>
+      <div class="search-panel">
+        <h3>Search listings</h3>
+        <div class="search-row">
+          <input type="text" placeholder="Location" aria-label="Location">
+          <select aria-label="Property type"><option>Any Type</option><option>Single Family</option><option>Condo</option><option>Land</option><option>Commercial</option></select>
+          <select aria-label="Bedrooms"><option>Bedrooms</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option><option>5+</option></select>
+          <select aria-label="Bathrooms"><option>Bathrooms</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option></select>
+          <button type="button" id="searchBtn">Search</button>
+        </div>
+        <div class="search-refine" id="searchMsg">Min price, max price, and sort options refine further — call for the full MLS feed.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">In the field</span>
+        <h2>Photo gallery</h2>
+        <p>A look at the homes and landscape Marci works in every day — tap through, or click a listing you like to ask about it directly.</p>
+      </div>
+
+      <div class="slideshow" id="slideshow">
+        <div class="slide-counter"><span id="slideCount">1</span> / <span id="slideTotal">9</span></div>
+        <div class="slide-viewport" id="slideViewport">
+          <div class="slide active" data-index="0"><img src="images/pg7.webp" alt="Aerial view of Pahrump neighborhood with pond and desert mountains">
+            <div class="slide-caption"><div><h3>Desert-ridge neighborhoods</h3><p>Homes set against pond views and the Spring Mountains — a signature Pahrump setting.</p></div><a class="slide-cta" href="#contact">Ask about this area</a></div>
+          </div>
+          <div class="slide" data-index="1"><img src="images/pg4.webp" alt="Aerial view of home with pool, desert mountain backdrop">
+            <div class="slide-caption"><div><h3>Private pool, open desert views</h3><p>Room to spread out, with the mountains as a backdrop every evening.</p></div><a class="slide-cta" href="#contact">Ask about this home</a></div>
+          </div>
+          <div class="slide" data-index="2"><img src="images/pg5.webp" alt="Aerial view of community clubhouse and courts">
+            <div class="slide-caption"><div><h3>Community clubhouse &amp; courts</h3><p>Pickleball, tennis, and a shared clubhouse — resort-style amenities close to home.</p></div><a class="slide-cta" href="#contact">Ask about this community</a></div>
+          </div>
+          <div class="slide" data-index="3"><img src="images/pg1.webp" alt="Community clubhouse and pickleball courts">
+            <div class="slide-caption"><div><h3>Built for an active lifestyle</h3><p>Courts, greens, and gathering space, all within walking distance.</p></div><a class="slide-cta" href="#contact">Ask about this community</a></div>
+          </div>
+          <div class="slide" data-index="4"><img src="images/2.webp" alt="Spanish-style home with pool at dusk">
+            <div class="slide-caption"><div><h3>Evenings by the pool</h3><p>A Spanish-style retreat that shows just as well at dusk as it does at noon.</p></div><a class="slide-cta" href="#contact">Ask about this home</a></div>
+          </div>
+          <div class="slide" data-index="5"><img src="images/pg6.webp" alt="Aerial view of clubhouse and courts">
+            <div class="slide-caption"><div><h3>Room to grow</h3><p>Newer construction near shared green space and community courts.</p></div><a class="slide-cta" href="#contact">Ask about this listing</a></div>
+          </div>
+          <div class="slide" data-index="6"><img src="images/pg2.webp" alt="Sunroom with desert landscape view">
+            <div class="slide-caption"><div><h3>Bring the desert inside</h3><p>Floor-to-ceiling glass turns every sunroom into a front-row seat.</p></div><a class="slide-cta" href="#contact">Ask about this home</a></div>
+          </div>
+          <div class="slide" data-index="7"><img src="images/pg3.webp" alt="Aerial view of home with desert mountain backdrop">
+            <div class="slide-caption"><div><h3>Quiet streets, big skies</h3><p>Low-density living minutes from Pahrump's amenities.</p></div><a class="slide-cta" href="#contact">Ask about this home</a></div>
+          </div>
+        </div>
+        <button class="slide-arrow prev" id="prevBtn" aria-label="Previous photo">&#8249;</button>
+        <button class="slide-arrow next" id="nextBtn" aria-label="Next photo">&#8250;</button>
+      </div>
+
+      <div class="thumb-strip" id="thumbStrip">
+        <button class="active" data-index="0"><img src="images/pg7.webp" alt=""></button>
+        <button data-index="1"><img src="images/pg4.webp" alt=""></button>
+        <button data-index="2"><img src="images/pg5.webp" alt=""></button>
+        <button data-index="3"><img src="images/pg1.webp" alt=""></button>
+        <button data-index="4"><img src="images/2.webp" alt=""></button>
+        <button data-index="5"><img src="images/pg6.webp" alt=""></button>
+        <button data-index="6"><img src="images/pg2.webp" alt=""></button>
+        <button data-index="7"><img src="images/pg3.webp" alt=""></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What we offer</span>
+        <h2>Our services</h2>
+        <p>Three things every client gets, no matter the price point.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <img src="images/Os3.webp" alt="Agent and client shaking hands over a signed agreement">
+          <div class="body">
+            <span class="service-num">01</span>
+            <h3>Real estate done right</h3>
+            <p>Nervous about buying or selling? Don't be. The team makes sure every step feels clear, whether it's a first home or an investment property.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="images/0s1.webp" alt="Styled living room coffee table">
+          <div class="body">
+            <span class="service-num">02</span>
+            <h3>Every price point</h3>
+            <p>Large or small, condo or mansion, fixer-upper or luxury — found, at the right price. We live, work, and play here.</p>
+          </div>
+        </div>
+        <div class="service-card">
+          <img src="images/0s2.webp" alt="Modern home exterior with pool and lawn">
+          <div class="body">
+            <span class="service-num">03</span>
+            <h3>Financing, made clear</h3>
+            <p>Questions about affordability, credit, or loan options get real answers, fast, through trusted local connections.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Call or visit</h2>
+        <p>Send a message, or reach out directly — appointments outside office hours are available on request.</p>
+      </div>
+      <div class="contact-grid">
+        <form class="contact-form" id="contactForm">
+          <div class="field"><label for="name">Name</label><input type="text" id="name" name="name" required></div>
+          <div class="field"><label for="email">Email *</label><input type="email" id="email" name="email" required></div>
+          <div class="field"><label for="message">Message</label><textarea id="message" name="message"></textarea></div>
+          <button type="submit">Send</button>
+          <p class="form-success" id="formSuccess">Thanks — Marci's team will be in touch shortly.</p>
+          <p class="form-note">This site is protected by reCAPTCHA; Google's Privacy Policy and Terms of Service apply.</p>
+        </form>
+        <div class="info-block">
+          <h4>Marci Metzger — The Ridge Realty Group</h4>
+          <p>3190 HW-160, Suite F<br>Pahrump, Nevada 89048, United States</p>
+          <a class="tel" href="tel:12069196886">(206) 919-6886</a>
+          <h4 style="margin-top:32px;">Office hours</h4>
+          <table class="hours-table"><tr><td>Monday – Sunday</td><td style="text-align:right;">8:00 am – 7:00 pm</td></tr></table>
+          <p style="margin-top:10px; font-size:0.85rem;">Appointments outside office hours available on request — just call.</p>
+          <div class="social-row">
+            <a href="https://www.facebook.com/MarciHomes/" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
+            <a href="https://www.instagram.com/marcimetzger_theridge/" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
+            <a href="https://www.linkedin.com/in/marci-metzger-30642496/" aria-label="LinkedIn" target="_blank" rel="noopener">IN</a>
+            <a href="https://www.yelp.com/biz/xr3yQN_m2SgO0R_7S6p62w" aria-label="Yelp" target="_blank" rel="noopener">YP</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer><div class="wrap">Copyright © 2026 Marci Metzger — All Rights Reserved</div></footer>
+
+<script>
+  const nav = document.getElementById('primary-nav');
+  const toggle = document.getElementById('menuToggle');
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.style.display === 'flex';
+    nav.style.display = isOpen ? 'none' : 'flex';
+    nav.style.flexDirection = 'column';
+    nav.style.gap = '18px';
+    nav.style.position = 'absolute';
+    nav.style.top = '64px';
+    nav.style.right = '24px';
+    nav.style.background = 'var(--dusk)';
+    nav.style.padding = '20px 24px';
+    nav.style.borderRadius = '2px';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    if (window.innerWidth <= 900) nav.style.display = 'none';
+  }));
+
+  const siteNav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    siteNav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  document.getElementById('searchBtn').addEventListener('click', () => {
+    document.getElementById('searchMsg').textContent =
+      "Listing search connects to live MLS data once deployed with Marci's feed — call (206) 919-6886 for current listings today.";
+  });
+
+  // Gallery slideshow
+  (function(){
+    const slides = document.querySelectorAll('#slideViewport .slide');
+    const thumbs = document.querySelectorAll('#thumbStrip button');
+    const countEl = document.getElementById('slideCount');
+    const totalEl = document.getElementById('slideTotal');
+    let current = 0;
+    let timer;
+
+    totalEl.textContent = slides.length;
+
+    function goTo(i){
+      slides[current].classList.remove('active');
+      thumbs[current].classList.remove('active');
+      current = (i + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      thumbs[current].classList.add('active');
+      countEl.textContent = current + 1;
+      thumbs[current].scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+    }
+
+    function next(){ goTo(current + 1); }
+    function prev(){ goTo(current - 1); }
+
+    function startAutoplay(){ timer = setInterval(next, 6000); }
+    function stopAutoplay(){ clearInterval(timer); }
+
+    document.getElementById('nextBtn').addEventListener('click', () => { next(); stopAutoplay(); startAutoplay(); });
+    document.getElementById('prevBtn').addEventListener('click', () => { prev(); stopAutoplay(); startAutoplay(); });
+    thumbs.forEach(btn => btn.addEventListener('click', () => {
+      goTo(parseInt(btn.dataset.index, 10)); stopAutoplay(); startAutoplay();
+    }));
+
+    const slideshowEl = document.getElementById('slideshow');
+    slideshowEl.addEventListener('mouseenter', stopAutoplay);
+    slideshowEl.addEventListener('mouseleave', startAutoplay);
+
+    startAutoplay();
+  })();
+
+  const form = document.getElementById('contactForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    document.getElementById('formSuccess').style.display = 'block';
+    form.reset();
+  });
+</script>
+
+</body>
+</html>
